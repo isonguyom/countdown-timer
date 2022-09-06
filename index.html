@@ -15,14 +15,13 @@
 
     <div id="app">
         <h1>{{ msg }}</h1>
-        <!-- <div>
-            <input v-model="elapsedDate" type="date" name="" id="">
-            <input v-model="elapsedTime" @input="setTimer" type="datetime-local" name="" id="">
-            {{ elapsedTime }}
-            <h4>Set elapsed time</h4>
+
+         <div class="time-input-wrapper">
+            <input id="timeInput" v-model="elapsedTime" @input="setTimer" type="datetime" placeholder="yyyy-mm-dd hh:mm:ss">
+            <!-- <p>{{ elapsedTime }}</p> -->
+            <h4>Set elapsed time(yyyy-mm-dd hh:mm:ss)</h4>
         </div>
-        <div>{{ currentTime }}</div>
-        <div>{{ timeCount }}</div> -->
+
         <div class="timer-wrapper">
             <div>
                 <h4>{{ years }}</h4>
@@ -55,8 +54,8 @@
             <!-- {{ time }} -->
         </div>
         <h1>{{ timeDiff }}</h1> 
-        <h3>Time</h3>
-        <button @click="toggleStart">{{ startText }}</button>
+        <h3>Total time in milliseconds</h3>
+        <button id="startBtn" @click="toggleStart">{{ startText }}</button>
         <button @click="stopCountDown">Stop</button>
     </div>
 

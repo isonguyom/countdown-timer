@@ -14,7 +14,7 @@ const app = createApp({
     data() {
         return {
             msg: "Countdown Timer!",
-            elapsedTime: new Date("2024-8-24").getTime(),
+            elapsedTime: null,
             // currentTime: new Date().getTime(),
             timeOut: 0,
             timeDiff: 0,
@@ -34,21 +34,25 @@ const app = createApp({
 
     methods: {
         countDown() {
-            this.timeDiff = Math.abs(this.elapsedTime - new Date().getTime());
-            // this.daysDiff = this.timeDiff.toFixed(0);
-            if (this.timeDiff > 0) {
-                this.timeOut = setTimeout(() => {
-                    this.timeDiff--
+            if (this.elapsedTime != null) {
 
-                    this.years = Math.trunc(this.timeDiff / oneYear) //year
-                    this.months = Math.trunc((this.timeDiff % oneYear) / oneMonth) //Month
-                    this.weeks = Math.trunc((this.timeDiff % oneMonth) / oneWeek) //week
-                    this.days = Math.trunc((this.timeDiff % oneWeek) / oneDay) //day
-                    this.hours = Math.trunc((this.timeDiff % oneDay) / oneHour) //hour
-                    this.minutes = Math.trunc((this.timeDiff % oneHour) / oneMinute) //minute
-                    this.seconds = Math.trunc((this.timeDiff % oneMinute) / oneSec) //second
-                    this.countDown()
-                }, 1000)
+
+                this.timeDiff = Math.abs(new Date(this.elapsedTime).getTime() - new Date().getTime());
+                // this.daysDiff = this.timeDiff.toFixed(0);
+                if (this.timeDiff > 0 && this.elapsedTime != null) {
+                    this.timeOut = setTimeout(() => {
+                        this.timeDiff--
+
+                        this.years = Math.trunc(this.timeDiff / oneYear) //year
+                        this.months = Math.trunc((this.timeDiff % oneYear) / oneMonth) //Month
+                        this.weeks = Math.trunc((this.timeDiff % oneMonth) / oneWeek) //week
+                        this.days = Math.trunc((this.timeDiff % oneWeek) / oneDay) //day
+                        this.hours = Math.trunc((this.timeDiff % oneDay) / oneHour) //hour
+                        this.minutes = Math.trunc((this.timeDiff % oneHour) / oneMinute) //minute
+                        this.seconds = Math.trunc((this.timeDiff % oneMinute) / oneSec) //second
+                        this.countDown()
+                    }, 1000)
+                }
             }
         },
         startCountDown() {
@@ -58,21 +62,25 @@ const app = createApp({
             clearTimeout(this.timeOut)
         },
         toggleStart() {
-            this.pause = !this.pause
-            this.pause ? this.countDown() : this.pauseCountDown()
-            this.startText = this.pause ? "Pause" : "Start"
+            if (this.elapsedTime != null) {
+
+
+                this.pause = !this.pause
+                this.pause ? this.countDown() : this.pauseCountDown()
+                this.startText = this.pause ? "Pause" : "Start"
+            }
         },
         stopCountDown() {
             this.timeDiff = 0
             this.pause = false
             this.startText = "Start"
             this.years = 0
-                    this.months = 0
-                    this.weeks = 0
-                    this.days = 0
-                    this.hours = 0
-                    this.minutes = 0
-                    this.seconds = 0
+            this.months = 0
+            this.weeks = 0
+            this.days = 0
+            this.hours = 0
+            this.minutes = 0
+            this.seconds = 0
             clearTimeout(this.timeOut)
             // clearTimeout(this.timeOut)
         }

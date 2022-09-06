@@ -13,7 +13,7 @@ var app = createApp({
   data: function data() {
     return {
       msg: "Countdown Timer!",
-      elapsedTime: new Date("2024-8-24").getTime(),
+      elapsedTime: null,
       // currentTime: new Date().getTime(),
       timeOut: 0,
       timeDiff: 0,
@@ -34,27 +34,29 @@ var app = createApp({
     countDown: function countDown() {
       var _this = this;
 
-      this.timeDiff = Math.abs(this.elapsedTime - new Date().getTime()); // this.daysDiff = this.timeDiff.toFixed(0);
+      if (this.elapsedTime != null) {
+        this.timeDiff = Math.abs(new Date(this.elapsedTime).getTime() - new Date().getTime()); // this.daysDiff = this.timeDiff.toFixed(0);
 
-      if (this.timeDiff > 0) {
-        this.timeOut = setTimeout(function () {
-          _this.timeDiff--;
-          _this.years = Math.trunc(_this.timeDiff / oneYear); //year
+        if (this.timeDiff > 0 && this.elapsedTime != null) {
+          this.timeOut = setTimeout(function () {
+            _this.timeDiff--;
+            _this.years = Math.trunc(_this.timeDiff / oneYear); //year
 
-          _this.months = Math.trunc(_this.timeDiff % oneYear / oneMonth); //Month
+            _this.months = Math.trunc(_this.timeDiff % oneYear / oneMonth); //Month
 
-          _this.weeks = Math.trunc(_this.timeDiff % oneMonth / oneWeek); //week
+            _this.weeks = Math.trunc(_this.timeDiff % oneMonth / oneWeek); //week
 
-          _this.days = Math.trunc(_this.timeDiff % oneWeek / oneDay); //day
+            _this.days = Math.trunc(_this.timeDiff % oneWeek / oneDay); //day
 
-          _this.hours = Math.trunc(_this.timeDiff % oneDay / oneHour); //hour
+            _this.hours = Math.trunc(_this.timeDiff % oneDay / oneHour); //hour
 
-          _this.minutes = Math.trunc(_this.timeDiff % oneHour / oneMinute); //minute
+            _this.minutes = Math.trunc(_this.timeDiff % oneHour / oneMinute); //minute
 
-          _this.seconds = Math.trunc(_this.timeDiff % oneMinute / oneSec); //second
+            _this.seconds = Math.trunc(_this.timeDiff % oneMinute / oneSec); //second
 
-          _this.countDown();
-        }, 1000);
+            _this.countDown();
+          }, 1000);
+        }
       }
     },
     startCountDown: function startCountDown() {
@@ -64,9 +66,11 @@ var app = createApp({
       clearTimeout(this.timeOut);
     },
     toggleStart: function toggleStart() {
-      this.pause = !this.pause;
-      this.pause ? this.countDown() : this.pauseCountDown();
-      this.startText = this.pause ? "Pause" : "Start";
+      if (this.elapsedTime != null) {
+        this.pause = !this.pause;
+        this.pause ? this.countDown() : this.pauseCountDown();
+        this.startText = this.pause ? "Pause" : "Start";
+      }
     },
     stopCountDown: function stopCountDown() {
       this.timeDiff = 0;
