@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Countdown Timer</title>
+    <link rel="stylesheet" href="./style.css">
+    <script src="https://unpkg.com/vue@3"></script>
+</head>
+
+<body>
+
+
+    <div id="app">
+        <h1>{{ msg }}</h1>
+        <!-- <div>
+            <input v-model="elapsedDate" type="date" name="" id="">
+            <input v-model="elapsedTime" @input="setTimer" type="datetime-local" name="" id="">
+            {{ elapsedTime }}
+            <h4>Set elapsed time</h4>
+        </div>
+        <div>{{ currentTime }}</div>
+        <div>{{ timeCount }}</div> -->
+        <div class="timer-wrapper">
+            <div>
+                <h4>{{ years }}</h4>
+                <p>Years</p>
+            </div>
+            <div>
+                <h4>{{ months }}</h4>
+                <p>Months</p>
+            </div>
+            <div>
+                <h4>{{ weeks }}</h4>
+                <p>Weeks</p>
+            </div>
+            <div>
+                <h4>{{ days }}</h4>
+                <p>Days</p>
+            </div>
+            <div>
+                <h4>{{ hours }}</h4>
+                Hours
+            </div>
+            <div>
+                <h4>{{ minutes }}</h4>
+                Minutes
+            </div>
+            <div>
+                <h4>{{ seconds }}</h4>
+                Seconds
+            </div>
+            <!-- {{ time }} -->
+        </div>
+        <h1>{{ timeDiff }}</h1> 
+        <h3>Time</h3>
+        <button @click="toggleStart">{{ startText }}</button>
+        <button @click="stopCountDown">Stop</button>
+    </div>
+
+
+
+    <script src="./app.js"></script>
+</body>
+
+</html>
