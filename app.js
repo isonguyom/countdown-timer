@@ -13,9 +13,8 @@ const oneYear = oneMonth * 12;
 const app = createApp({
     data() {
         return {
-            msg: "Countdown Timer!",
+            msg: "Vuejs Countdown Timer",
             elapsedTime: null,
-            // currentTime: new Date().getTime(),
             timeOut: 0,
             timeDiff: 0,
             daysDiff: 0,
@@ -36,9 +35,8 @@ const app = createApp({
         countDown() {
             if (this.elapsedTime != null) {
 
-
                 this.timeDiff = Math.abs(new Date(this.elapsedTime).getTime() - new Date().getTime());
-                // this.daysDiff = this.timeDiff.toFixed(0);
+                
                 if (this.timeDiff > 0 && this.elapsedTime != null) {
                     this.timeOut = setTimeout(() => {
                         this.timeDiff--
@@ -82,18 +80,9 @@ const app = createApp({
             this.minutes = 0
             this.seconds = 0
             clearTimeout(this.timeOut)
-            // clearTimeout(this.timeOut)
         }
 
-        // pauseCountDown() {
-        //     !this.countDownTimer()
-        // }
     },
-    mounted() {
-        // this.countDown()
-        // console.log(this.countDownTimer())
-    }
-
 })
 
 app.mount("#app")

@@ -12,9 +12,8 @@ var oneYear = oneMonth * 12;
 var app = createApp({
   data: function data() {
     return {
-      msg: "Countdown Timer!",
+      msg: "Vuejs Countdown Timer",
       elapsedTime: null,
-      // currentTime: new Date().getTime(),
       timeOut: 0,
       timeDiff: 0,
       daysDiff: 0,
@@ -35,7 +34,7 @@ var app = createApp({
       var _this = this;
 
       if (this.elapsedTime != null) {
-        this.timeDiff = Math.abs(new Date(this.elapsedTime).getTime() - new Date().getTime()); // this.daysDiff = this.timeDiff.toFixed(0);
+        this.timeDiff = Math.abs(new Date(this.elapsedTime).getTime() - new Date().getTime());
 
         if (this.timeDiff > 0 && this.elapsedTime != null) {
           this.timeOut = setTimeout(function () {
@@ -83,14 +82,8 @@ var app = createApp({
       this.hours = 0;
       this.minutes = 0;
       this.seconds = 0;
-      clearTimeout(this.timeOut); // clearTimeout(this.timeOut)
-    } // pauseCountDown() {
-    //     !this.countDownTimer()
-    // }
-
-  },
-  mounted: function mounted() {// this.countDown()
-    // console.log(this.countDownTimer())
+      clearTimeout(this.timeOut);
+    }
   }
 });
 app.mount("#app");

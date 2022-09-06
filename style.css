@@ -12,6 +12,11 @@ body {
     -webkit-text-size-adjust: 100%;
     text-size-adjust: 100%;
     font-size: 100%;
+    background: url("./bg.jpg") center;
+    background-color: rgba(0, 0, 0, 0.534);
+    background-size: cover;
+    background-blend-mode: soft-light;
+    color: #f8f8f8;
 }
 
 div.time-input-wrapper {
@@ -19,9 +24,15 @@ div.time-input-wrapper {
 }
 
 input#timeInput {
-    padding: 7px;
+    padding: 7px 15px;
     height: 55px;
     font-size: 1.2rem;
+    margin-bottom: 7px;
+    border: none;
+}
+
+div.time-input-wrapper h4 {
+    color: #c4c4c4;
 }
 
 .timer-wrapper {
@@ -31,13 +42,15 @@ input#timeInput {
     text-align: center;
     margin: 40px 0;
     font-size: 0.8rem;
+    color: #c4c4c4;
 }
 
 .timer-wrapper h4 {
     padding: 10px;
-    width: 60px;
+    width: 70px;
     border: 1px solid gray;
     font-size: 1.5rem;
+    color: #f8f8f8;
 }
 
 button {
@@ -46,8 +59,18 @@ button {
     min-width: 100px;
     cursor: pointer;
     margin-top: 20px;
+    border: none;
+}
+
+button:hover {
+    background-color: #776135;
+    color: #f8f8f8;
 }
 
 button#startBtn {
     margin-right: 20px;
+}
+
+*:focus {
+    outline: 2px solid #b19255;
 }
